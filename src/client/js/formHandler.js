@@ -4,7 +4,6 @@ button.addEventListener("click", formSubmit, false);
 
 function formSubmit() {
   const url = document.getElementById("input").value;
-
   console.log(url + " submitted");
 }
 export { formSubmit };

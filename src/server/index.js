@@ -8,7 +8,7 @@ const port = 3000;
 app.use(express.static('dist'));
 
 app.get('/', function (req, res) {
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile(path.resolve('dist/index.html'))
 })
 
 const server = app.listen(port, () => {
@@ -22,7 +22,16 @@ var textapi = new aylien({
 });
 
 //GET Method
-const appData = {};
+const appData = [];
 app.get("/all", function(req, res) {
+  textapi.sentiment({
+    'url': req,
+    mode: 'document'
+  }, function(error, response) {
+    if (error === null) {
+      console.log(response);
+      appData.push(response);
+    }
+  });
   res.send(appData);
 });
