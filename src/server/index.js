@@ -28,7 +28,7 @@ app.get("/all", function(req, res) {
     'text': "Trump's approval rating is down significantly from 49% in March,"
     + "while his disapproval rating is up 9 points from 45%.",
     // 'url': "https://edition.cnn.com/2020/04/19/politics/trump-approval-rating-rally/index.html",
-    mode: 'document'
+     
   }, function(error, response) {
     if (error === null) {
       console.log(response);
