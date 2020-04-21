@@ -1,8 +1,12 @@
-document.body.addEventListener("click", updateDisplay);
-
-function updateDisplay(){
-//set innerHTML to display information from API dynamically
-document.getElementById("response").innerHTML = "API Data (edit)";
-}
-
-export {updateDisplay};
+// const updateDisplay = async() => {
+//   const request = await fetch();
+//   //set innerHTML to display information from API dynamically
+//   try{
+//     const data = await request.json();
+//     document.getElementById("response").innerHTML = "data" + data;
+//   }catch(error){
+//     console.log("error", error);
+//   }
+// }
+//
+// export {updateDisplay};

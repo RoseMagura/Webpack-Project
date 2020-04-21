@@ -1,9 +1,17 @@
+const path = require('path');
+
 require("dotenv").config();
 
-const path = require('path');
 const express = require("express");
 const app = express();
-const port = 3001;
+const port = 3000;
+
+const cors = require("cors");
+app.use(cors());
+
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(express.static('dist'));
 
@@ -21,29 +29,30 @@ var textapi = new aylien({
   application_key: process.env.API_KEY
 });
 
-//GET Method
-const appData = [];
-app.get("/all", function(req, res) {
-  res.send(textapi.sentiment({
-    'text': "Trump's approval rating is down significantly from 49% in March,"
-    + "while his disapproval rating is up 9 points from 45%.",
-    // 'url': "https://edition.cnn.com/2020/04/19/politics/trump-approval-rating-rally/index.html",
-     
+console.log("ID is: " + textapi.application_id);
+
+
+//Post Url
+app.post('/postURL', function(req, res){
+  console.log(`url is ${req.body.input.url}`);
+  textapi.sentiment({
+    'url': `${req.body.input.url}`,
+    'mode': 'document'
   }, function(error, response) {
-    if (error === null) {
-      console.log(response);
-      appData.push(response);
-    }
-  }));
-  // res.send(appData);
+     console.log('Error: ', error);
+     if (error === null){
+       console.log("worked");
+       console.log(response);
+       res.send(response);
+     }
+
+  })
 });
 
 // textapi.sentiment({
 //   'url': "https://edition.cnn.com/2020/04/19/politics/trump-approval-rating-rally/index.html",
-//   mode: 'document'
 // }, function(error, response) {
 //   if (error === null) {
 //     console.log(response);
-//     appData.push(response);
 //   }
 // });

@@ -4,7 +4,11 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   devtool: "source-map",
-  entry: "./src/client/index.js",
+  entry: [
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    "./src/client/index.js"
+  ],
   output: {
     libraryTarget: "var",
     library: "Client"
