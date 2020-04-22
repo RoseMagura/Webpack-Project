@@ -7,12 +7,8 @@ require("regenerator-runtime/runtime");
 module.exports = {
   mode: "development",
   entry: "./src/client/index.js",
-  output: {
-    libraryTarget: 'var',
-    library: 'Client'
-  },
   devServer: {
-    port: 3000
+    port: 3001
   },
   module: {
     rules: [

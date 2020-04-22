@@ -1,10 +1,11 @@
 const path = require('path');
 
-require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config();
 
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 3001;
 
 const cors = require("cors");
 app.use(cors());
@@ -23,14 +24,15 @@ const server = app.listen(port, () => {
   console.log(`running on localhost: ${port}`);
 });
 
+// app.listen(3001, function(){
+//   console.log('Side server listening on port 3001')
+// })
+
 var aylien = require("aylien_textapi");
 var textapi = new aylien({
   application_id: process.env.API_ID,
   application_key: process.env.API_KEY
 });
-
-console.log("ID is: " + textapi.application_id);
-
 
 //Post Url
 app.post('/postURL', function(req, res){
@@ -48,11 +50,3 @@ app.post('/postURL', function(req, res){
 
   })
 });
-
-// textapi.sentiment({
-//   'url': "https://edition.cnn.com/2020/04/19/politics/trump-approval-rating-rally/index.html",
-// }, function(error, response) {
-//   if (error === null) {
-//     console.log(response);
-//   }
-// });
