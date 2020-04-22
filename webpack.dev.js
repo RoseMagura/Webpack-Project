@@ -5,7 +5,6 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 module.exports = {
   watch: true,
-  devtool: "source-map",
   entry: "./src/client/index.js",
   output: {
     filename: './dist/main.js'

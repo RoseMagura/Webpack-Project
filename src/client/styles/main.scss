@@ -1,3 +1,32 @@
-body {
-  color: #8934eb;
+@import 'footer.scss';
+@import 'header.scss';
+
+
+#input{
+  width: 600px;
+  height: 2em;
+}
+
+// .main{
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+//   padding: 50px;
+//   border: 5px black solid;
+//   background-color: purple;
+// }
+
+body{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10%;
+  font-size: 25px;
+  background-color: #d5ede5;
+}
+
+button{
+  font-size: 25px;
+  background-color: #21bf8a;
 }

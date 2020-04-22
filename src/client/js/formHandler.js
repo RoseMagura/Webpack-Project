@@ -6,22 +6,26 @@ function formSubmit() {
   // event.preventDefault();
   const url = document.getElementById("input").value;
   console.log(url + " submitted");
-  fetch('http://localhost:3000/postURL', {
-    method: 'POST',
-    mode: 'cors',
+  fetch("http://localhost:3001/postURL", {
+    method: "POST",
+    mode: "cors",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       input: {
-        'url': `${url}`
+        url: `${url}`
       }
     })
   })
     .then(res => res.json())
-    .then(function(res){
-       document.getElementById("response").innerHTML = res.polarity;
-    })
-  }
+    .then(function(res) {
+      document.getElementById(
+        "response"
+      ).innerHTML = `Polarity: ${res.polarity}
+                    Polarity Confidence: ${res.polarity_confidence}`;
+    });
+}
+
 
   export{formSubmit};
