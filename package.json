@@ -1,5 +1,8 @@
 {
-  "name": "example-project",
+  "name": "my-project",
+  "jest": {
+    "verbose": true
+  },
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

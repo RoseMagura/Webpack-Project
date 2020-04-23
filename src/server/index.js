@@ -24,10 +24,6 @@ const server = app.listen(port, () => {
   console.log(`running on localhost: ${port}`);
 });
 
-// app.listen(3001, function(){
-//   console.log('Side server listening on port 3001')
-// })
-
 var aylien = require("aylien_textapi");
 var textapi = new aylien({
   application_id: process.env.API_ID,
@@ -36,15 +32,12 @@ var textapi = new aylien({
 
 //Post Url
 app.post('/postURL', function(req, res){
-  console.log(`url is ${req.body.input.url}`);
   textapi.sentiment({
     'url': `${req.body.input.url}`,
     'mode': 'document'
   }, function(error, response) {
      console.log('Error: ', error);
      if (error === null){
-       console.log("worked");
-       console.log(response);
        res.send(response);
      }
 
