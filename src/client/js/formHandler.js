@@ -5,7 +5,7 @@ function formSubmit() {
   const url = document.getElementById("input").value;
   console.log(url + " submitted");
 
-  isURL();
+  isURL(url);
 
   fetch("http://localhost:3001/postURL", {
     method: "POST",
